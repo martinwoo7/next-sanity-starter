@@ -89,7 +89,7 @@ const Navbar = () => {
 	}, [pathname, searchParams]);
 
 	return (
-		<header className="sticky top-0 text-white">
+		<header className="sticky top-0 text-white z-20">
 			<nav
 				className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
 				aria-label="Global"
@@ -150,9 +150,10 @@ const Navbar = () => {
 						}
 						role="dialog"
 						aria-modal="true"
+						key="modal"
 					>
 						<XMarkIcon
-							className="absolute top-6 right-4 cursor-pointer w-6"
+							className="absolute top-6 right-6 cursor-pointer w-6"
 							onClick={() => setIsOpen((prev) => !prev)}
 						/>
 						<motion.div

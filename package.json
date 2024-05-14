@@ -13,6 +13,7 @@
     "@portabletext/react": "^3.0.18",
     "@sanity/client": "^6.18.0",
     "@sanity/image-url": "^1.0.2",
+    "@sanity/preview-url-secret": "^1.6.12",
     "@sanity/vision": "^3.41.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.1.9",
@@ -26,12 +27,14 @@
     "react-hook-form": "^7.51.4",
     "react-use-measure": "^2.1.1",
     "resend": "^3.2.0",
+    "rxjs": "^7.8.1",
     "sanity": "^3.41.1",
     "styled-components": "^6.1.10",
     "use-debounce": "^10.0.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
