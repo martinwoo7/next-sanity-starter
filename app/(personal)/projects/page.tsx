@@ -107,8 +107,7 @@ export default async function Page() {
 												</p>
 											</blockquote>
 											<figcaption className="mt-6 font-semibold">
-												"Debra Fiscal, CEO of
-												FamilyFund"
+												Debra Fiscal, CEO of FamilyFund
 											</figcaption>
 										</figure>
 									</div>
@@ -144,7 +143,7 @@ export default async function Page() {
 
 			<section className="mx-auto max-w-2xl lg:max-w-none mt-24 md:mt-32 lg:mt-40">
 				<h2 className="font-display text-2xl font-semibold">
-					You're in good company
+					You&apos;re in good company
 				</h2>
 				<div className="mt-10">
 					<div className="relative before:absolute after:absolute before:bg-white after:bg-white/20 before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px"></div>
