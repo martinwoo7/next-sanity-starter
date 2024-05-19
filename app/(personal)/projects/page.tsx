@@ -12,17 +12,17 @@ export const metadata: Metadata = {
 export default async function Page() {
 	const projects = await getAllProjects(client);
 	return (
-		<main className="max-w-7xl px-6 md:px-16 lg:px-32">
+		<main className="max-w-7xl px-6 md:px-16 lg:px-32 mx-auto">
 			<section className="mx-auto max-w-2xl lg:max-w-none gap-6 mt-24 sm:mt-32 lg:mt-40">
 				<h1 className="">
 					<span className="block font-display text-base font-semibold ">
 						Our work
 					</span>
-					<span className="mt-6 block max-w-5xl font-display text-5xl font-medium tracking-tight  [text-wrap:balance] sm:text-6xl">
+					<span className="mt-6 block max-w-5xl font-display text-5xl font-medium tracking-tight [text-wrap:balance] sm:text-6xl">
 						Proven solutions for real-world problems.
 					</span>
 				</h1>
-				<div className="text-zinc-400 mt-6 max-w-3xl text-xl ">
+				<div className="text-zinc-400 mt-6 max-w-3xl text-xl">
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Nam molestie justo sit amet sapien mollis semper. Nulla
@@ -180,7 +180,7 @@ export default async function Page() {
 							<div className="mt-6 flex">
 								<Link
 									href="/#"
-									className="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition bg-black hover:bg-black/20"
+									className="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition bg-black hover:bg-black/80"
 								>
 									<span className="relative top-px">
 										Say Hej

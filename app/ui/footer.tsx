@@ -15,14 +15,17 @@ export const Footer = () => {
 	const support = ["Pricing", "Documentation", "Guides", "API Status"];
 	const legal = ["Claim", "Privacy", "Terms"];
 	return (
-		<footer aria-labelledby="footer-heading" className="mt-32 sm:mt-40 relative">
+		<footer
+			aria-labelledby="footer-heading"
+			className="mt-32 sm:mt-40 relative"
+		>
 			<h2
 				id="footer-heading"
 				className="absolute w-1 h-1 p-0 -m-1 overflow-hidden"
 			>
 				Footer
 			</h2>
-			<div className="pb-8 px-6 max-w-7xl md:px-8">
+			<div className="pb-8 px-6 max-w-7xl md:px-8 mx-auto">
 				<div className="xl:grid xl:grid-cols-3 xl:gap-8">
 					<div>
 						<Image

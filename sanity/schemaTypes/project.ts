@@ -61,5 +61,15 @@ export default defineType({
 			title: "Description",
 			type: "blockContent",
 		}),
+		defineField({
+			name: "description2",
+			title: "Description2",
+			type: "blockContent",
+		}),
+		defineField({
+			name: "quote",
+			title: "Quote",
+			type: "blockContent",
+		}),
 	],
 });
