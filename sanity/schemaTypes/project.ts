@@ -52,6 +52,12 @@ export default defineType({
             of: [{ type: 'string' }],
         }),
         defineField({
+            name: 'solutions',
+            title: 'Solutions',
+            type: 'array',
+            of: [{ type: 'string' }],
+        }),
+        defineField({
             name: 'createdAt',
             title: 'Created at',
             type: 'datetime',
@@ -72,6 +78,7 @@ export default defineType({
             fields: [
                 { type: 'string', name: 'message', title: 'Message' },
                 { type: 'string', name: 'person', title: 'Person' },
+                { type: 'string', name: 'place', title: 'Place' },
             ],
         }),
     ],

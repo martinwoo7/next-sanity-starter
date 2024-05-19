@@ -29,6 +29,7 @@ export default function CoverImage({
                 alt={`Cover Image for ${title}`}
                 src={urlForImage(source)}
                 sizes="100vw"
+                quality={50}
                 priority={priority}
             />
         </div>

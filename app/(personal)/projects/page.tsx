@@ -101,7 +101,7 @@ export default async function Page() {
 												</div>
 												<div className="mt-8 flex">
 													<Link
-														href="/#"
+														href={`/projects/${project.slug.current}`}
 														className="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition bg-neutral-200 text-black hover:bg-neutral-300"
 													>
 														<span className="relative top-px">
@@ -121,10 +121,11 @@ export default async function Page() {
 															</p>
 														</blockquote>
 														<figcaption className="mt-6 font-semibold">
-															{
+															{project.quote
+																.person +
+																", " +
 																project.quote
-																	.person
-															}
+																	.place}
 														</figcaption>
 													</figure>
 												</div>
