@@ -77,7 +77,6 @@ Use the Deploy Button below. It will let you deploy the starter using [Vercel](h
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmartinwoo7%2Fnext-sanity-starter&demo-title=Next.js%20Sanity.io%20Starter&demo-description=Starter%20template%20for%20Calicode%20built%20with%20Next.js%20and%20Sanity.io&demo-url=https%3A%2F%2Fnext-sanity-starter-six.vercel.app%2F&integration-ids=oac_hb2LITYajhRQ0i4QznmKH7gx)
 
-
 ### Step 2. Set up the project locally
 
 [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) that was created for you on your GitHub account. Once cloned, run the following command from the project's root directory:
@@ -99,6 +98,7 @@ This will create a git-ignored `.env` file with environment variables that will 
 ```bash
 npm install && npm run dev
 ```
+
 When you run this development server, the changes you make in your frontend and studio configuration will be applied live using hot reloading.
 
 The website should be up and running on [http://localhost:3000][localhost-3000]! You can create and edit content on [http://localhost:3000/studio][localhost-3000-studio].
@@ -107,7 +107,7 @@ The website should be up and running on [http://localhost:3000][localhost-3000]!
 
 To deploy your changes to production you use `git`:
 
-```bash
+````bash
 git add .
 git commit
 git push
@@ -116,4 +116,4 @@ Alternatively, you can deploy without a `git` hosting provider using the Vercel 
 
 ```bash
 npx vercel --prod
-```
+````

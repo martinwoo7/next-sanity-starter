@@ -6,6 +6,8 @@ import { urlForImage } from "@/sanity/lib/image";
 import { getAllProjects } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 
+import moment from "moment";
+
 export const metadata: Metadata = {
 	title: "Projects",
 };
@@ -37,83 +39,103 @@ export default async function Page() {
 						Case studies
 					</h2>
 					<div className="mt-10 space-y-20 sm:space-y-24 lg:space-y-32">
-						<article>
-							<div className="grid grid-cols-3 gap-x-8 gap-y-8 pt-16 relative before:absolute after:absolute before:bg-white after:bg-white/20 before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
-								<div className="col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block">
-									<div className="sm:flex sm:items-center sm:gap-x-6 lg:block">
-										<Image
-											src="/vercel.svg"
-											alt="logo"
-											width={36}
-											height={36}
-											className="h-16 w-16 flex-none dark:invert"
-										/>
-										<h3 className="mt-6 text-sm font-semibold sm:mt-0 lg:mt-8">
-											FamilyFund
-										</h3>
-									</div>
-									<div className="mt-1 flex gap-x-4 sm:mt-0 lg:block">
-										<p className="text-sm tracking-tight after:text-white/40 after:ml-4 after:font-semibold after:content-['/'] lg:mt-2 lg:after:hidden">
-											Web development, CMS
-										</p>
-										<p className="text-sm lg:mt-2">
-											<time>January 2023</time>
-										</p>
-									</div>
-								</div>
-								<div className="col-span-full lg:col-span-2 lg:max-w-2xl">
-									<p className="font-display text-4xl font-medium">
-										<Link href="/#">
-											Skip the bank, borrow from those you
-											trust
-										</Link>
-									</p>
-									<div className="mt-6 space-y-6 text-base">
-										<p>
-											FamilyFund is a crowdfunding
-											platform for friends and family.
-											Allowing users to take personal
-											loans from their network without a
-											traditional financial institution.
-										</p>
-										<p>
-											We developed a custom CMS to power
-											their blog with and optimised their
-											site to rank higher for the keywords
-											“Gary Vee” and “Tony Robbins”.
-										</p>
-									</div>
-									<div className="mt-8 flex">
-										<Link
-											href="/#"
-											className="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition bg-neutral-200 text-black hover:bg-neutral-300"
-										>
-											<span className="relative top-px">
-												Read case study
-											</span>
-										</Link>
-									</div>
-									<div className="pl-8 mt-12 relative before:absolute after:absolute before:bg-white after:bg-neutral-200/20 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
-										<figure className="text-sm">
-											<blockquote className="text-neutral-400 [&>*]:relative [&>:first-child]:before:absolute [&>:first-child]:before:right-full [&>:first-child]:before:content-['“'] [&>:last-child]:after:content-['”']">
-												<p>
-													Working with Studio, we felt
-													more like a partner than a
-													customer. They really
-													resonated with our mission
-													to change the way people
-													convince their parents to
-													cash out their pensions.
+						{projects ? (
+							projects.map((project) => {
+								return (
+									<article key={project._id}>
+										<div className="grid grid-cols-3 gap-x-8 gap-y-8 pt-16 relative before:absolute after:absolute before:bg-white after:bg-white/20 before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px">
+											<div className="col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block">
+												<div className="sm:flex sm:items-center sm:gap-x-6 lg:block">
+													<Image
+														src="/vercel.svg"
+														alt="logo"
+														width={36}
+														height={36}
+														className="h-16 w-16 flex-none dark:invert"
+													/>
+													<h3 className="mt-6 text-sm font-semibold sm:mt-0 lg:mt-8">
+														{project.title}
+													</h3>
+												</div>
+												<div className="mt-1 flex gap-x-4 sm:mt-0 lg:block">
+													<p className="text-sm tracking-tight after:text-white/40 after:ml-4 after:font-semibold after:content-['/'] lg:mt-2 lg:after:hidden">
+														{project.services.map(
+															(item, index) => (
+																<span
+																	key={`item_${index}`}
+																>
+																	{index
+																		? ", "
+																		: ""}
+																	{item}
+																</span>
+															)
+														)}
+													</p>
+													<p className="text-sm lg:mt-2">
+														<time
+															dateTime={
+																project._createdAt
+															}
+														>
+															{moment(
+																project._createdAt
+															).format(
+																"MMMM YYYY"
+															)}
+														</time>
+													</p>
+												</div>
+											</div>
+											<div className="col-span-full lg:col-span-2 lg:max-w-2xl">
+												<p className="font-display text-4xl font-medium">
+													<Link href="/#">
+														{project.tagline}
+													</Link>
 												</p>
-											</blockquote>
-											<figcaption className="mt-6 font-semibold">
-												Debra Fiscal, CEO of FamilyFund
-											</figcaption>
-										</figure>
-									</div>
-								</div>
-							</div>
-						</article>
+												<div className="mt-6 space-y-6 text-base">
+													<p>
+														{project.blurb.summary}
+													</p>
+													<p>{project.blurb.work}</p>
+												</div>
+												<div className="mt-8 flex">
+													<Link
+														href="/#"
+														className="inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition bg-neutral-200 text-black hover:bg-neutral-300"
+													>
+														<span className="relative top-px">
+															Read case study
+														</span>
+													</Link>
+												</div>
+												<div className="pl-8 mt-12 relative before:absolute after:absolute before:bg-white after:bg-neutral-200/20 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px">
+													<figure className="text-sm">
+														<blockquote className="text-neutral-400 [&>*]:relative [&>:first-child]:before:absolute [&>:first-child]:before:right-full [&>:first-child]:before:content-['“'] [&>:last-child]:after:content-['”']">
+															<p>
+																{
+																	project
+																		.quote
+																		.message
+																}
+															</p>
+														</blockquote>
+														<figcaption className="mt-6 font-semibold">
+															{
+																project.quote
+																	.person
+															}
+														</figcaption>
+													</figure>
+												</div>
+											</div>
+										</div>
+									</article>
+								);
+							})
+						) : (
+							<p className="">No projects created yet!</p>
+						)}
 					</div>
 				</div>
 			</section>

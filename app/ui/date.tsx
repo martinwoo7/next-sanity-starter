@@ -1,9 +1,9 @@
-import moment from "moment";
+import moment from 'moment';
 const Date = ({ date }: { date: string }) => {
-	if (!date) return null;
+    if (!date) return null;
 
-	const momentDate = moment(date);
-	return <time dateTime={date}>{momentDate.format("MMMM, D YYYY")}</time>;
+    const momentDate = moment(date);
+    return <time dateTime={date}>{momentDate.format('MMMM, D YYYY')}</time>;
 };
 
 export default Date;
