@@ -3,7 +3,7 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{ protocol: "https", hostname: "cdn.sanity.io" },
-			// { hostname: "source.unsplash.com" },
+			{ hostname: "source.unsplash.com" },
 		],
 	},
 	typescript: {
@@ -19,9 +19,9 @@ const nextConfig = {
 			fullUrl: true,
 		},
 	},
-	experimental: {
-		taint: true,
-	},
+	// experimental: {
+	// 	taint: true,
+	// },
 };
 
 export default nextConfig;

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { postsQuery, getAllPosts, type Post } from "@/sanity/lib/queries";
+import { getAllPosts, type Post } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 
 import HeroPost from "@/app/ui/blog/HeroPost";

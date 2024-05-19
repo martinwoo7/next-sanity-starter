@@ -1,42 +1,47 @@
 import { defineField, defineType } from "sanity";
+import { BiPackage } from "react-icons/bi";
 
 export default defineType({
-	name: "post",
-	title: "Post",
+	name: "project",
+	title: "Project",
 	type: "document",
+	icon: BiPackage,
 	fields: [
 		defineField({
 			name: "title",
 			title: "Title",
+			type: "string",
+			description: "Enter the name of the project",
+		}),
+		defineField({
+			name: "tagline",
+			title: "Tagline",
 			type: "string",
 		}),
 		defineField({
 			name: "slug",
 			title: "Slug",
 			type: "slug",
-			options: {
-				source: "title",
-				maxLength: 96,
-			},
+			description:
+				"Add a custom slug for the URL or generate one from the name",
+			options: { source: "title", maxLength: 96 },
 		}),
 		defineField({
-			name: "author",
-			title: "Author",
-			type: "reference",
-			to: { type: "author" },
+			name: "logo",
+			title: "Project Logo",
+			type: "image",
 		}),
 		defineField({
 			name: "mainImage",
-			title: "Main image",
+			title: "Main Image",
 			type: "image",
-			options: {
-				hotspot: true,
-			},
+			description: "Upload a cover image for this project",
+			options: { hotspot: true },
 			fields: [
 				{
 					name: "alt",
-					type: "string",
 					title: "Alternative Text",
+					type: "string",
 				},
 			],
 		}),
@@ -47,26 +52,14 @@ export default defineType({
 			of: [{ type: "reference", to: { type: "category" } }],
 		}),
 		defineField({
-			name: "publishedAt",
-			title: "Published at",
+			name: "createdAt",
+			title: "Created at",
 			type: "datetime",
 		}),
 		defineField({
-			name: "body",
-			title: "Body",
+			name: "description",
+			title: "Description",
 			type: "blockContent",
 		}),
 	],
-
-	preview: {
-		select: {
-			title: "title",
-			author: "author.name",
-			media: "mainImage",
-		},
-		prepare(selection) {
-			const { author } = selection;
-			return { ...selection, subtitle: author && `by ${author}` };
-		},
-	},
 });

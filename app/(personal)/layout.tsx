@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Navbar from "@/app/ui/topnav";
+import { Footer } from "@/app/ui/footer";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 
@@ -24,9 +25,12 @@ export default async function IndexRoute({
 				<Suspense>
 					<Navbar />
 				</Suspense>
-				<div className="mt-20 flex-grow px-4 md:px-16 lg:px-32">
-					<Suspense>{children}</Suspense>
-				</div>
+
+				<Suspense>{children}</Suspense>
+
+				<Suspense>
+					<Footer />
+				</Suspense>
 			</div>
 			{draftMode().isEnabled && <VisualEditing />}
 		</>
