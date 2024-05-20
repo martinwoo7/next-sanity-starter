@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { ImageAsset, Slug } from "sanity";
 
 import { urlForImage } from "@/sanity/lib/image";
+import type { Author } from "@/sanity/lib/queries";
 
 import CoverImage from "../CoverImage";
 import Date from "../../date";
@@ -20,7 +21,7 @@ const HeroPost = ({
 	mainImage: ImageAsset;
 	date: string;
 	excerpt: string;
-	author: string;
+	author: Author;
 	slug: Slug;
 }) => {
 	return (

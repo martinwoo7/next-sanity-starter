@@ -82,7 +82,7 @@ export interface Post {
 	_type: "post";
 	_id: string;
 	_createdAt: string;
-	author: string;
+	author: Author;
 	title: string;
 	mainImage: ImageAsset;
 	slug: Slug;
