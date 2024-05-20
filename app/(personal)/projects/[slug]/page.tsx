@@ -92,8 +92,8 @@ const Post = async ({ params }: { params: { slug: string } }) => {
 							</div>
 						</div>
 					</div>
-					<div className="border-y border-neutral-200 bg-neutral-100">
-						<div className="-my-px mx-auto max-w-[76rem] bg-neutral-200">
+					<div className="border-y border-white bg-white">
+						<div className="-my-px mx-auto max-w-[76rem] bg-white">
 							<Image
 								src={urlForImage(project.mainImage)}
 								alt="project image"

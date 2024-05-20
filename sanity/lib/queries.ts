@@ -4,8 +4,9 @@ import type { SanityClient } from "next-sanity";
 import { unstable_noStore as noStore } from "next/cache";
 
 // retrieve all posts
-export const postsQuery = groq`*[_type == "post" && publishedAt < now()] | order(_createdAt desc)`;
+export const postsQuery = groq`*[_type == "post" && publishedAt < now()] {..., author->} | order(_createdAt desc)`;
 export async function getAllPosts(client: SanityClient): Promise<Post[]> {
+	noStore();
 	return await client.fetch(postsQuery);
 }
 
@@ -14,7 +15,7 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
     _id,
     _createdAt,
     title,
-    author,
+    author->,
     mainImage,
     slug,
     body
@@ -23,6 +24,7 @@ export async function getSinglePost(
 	client: SanityClient,
 	slug: string
 ): Promise<Post> {
+	noStore();
 	return await client.fetch(postBySlugQuery, { slug });
 }
 
@@ -35,12 +37,14 @@ export async function getOtherPosts(
 	client: SanityClient,
 	slug: string
 ): Promise<Post[]> {
+	noStore();
 	return await client.fetch(otherPostsQuery, { slug });
 }
 
 // retrieve all authors
 export const allAuthorsQuery = groq`*[_type == "author" ]`;
 export async function getAllAuthors(client: SanityClient): Promise<Author[]> {
+	noStore();
 	return await client.fetch(allAuthorsQuery);
 }
 
@@ -57,6 +61,7 @@ export async function getSingleProject(
 	client: SanityClient,
 	slug: string
 ): Promise<Project> {
+	noStore();
 	return await client.fetch(projectBySlugQuery, { slug });
 }
 
@@ -69,6 +74,7 @@ export async function getOtherProjects(
 	client: SanityClient,
 	slug: string
 ): Promise<Project[]> {
+	noStore();
 	return await client.fetch(otherProjectsQuery, { slug });
 }
 
@@ -81,6 +87,7 @@ export interface Post {
 	mainImage: ImageAsset;
 	slug: Slug;
 	body: PortableTextBlock[];
+	excerpt: string;
 }
 
 export interface Author {
@@ -100,7 +107,7 @@ export interface Project {
 	tagline: string;
 	slug: Slug;
 	logo: ImageAsset;
-	mainImage: ImageAsset
+	mainImage: ImageAsset;
 	services: string[];
 	solutions: string[];
 	blurb: { summary: string; work: string };

@@ -11,6 +11,7 @@ import Date from "../../date";
 const HeroPost = ({
 	title,
 	mainImage,
+	excerpt,
 	date,
 	author,
 	slug,
@@ -18,6 +19,7 @@ const HeroPost = ({
 	title: string;
 	mainImage: ImageAsset;
 	date: string;
+	excerpt: string;
 	author: string;
 	slug: Slug;
 }) => {
@@ -31,8 +33,8 @@ const HeroPost = ({
 					priority
 				/>
 			</div>
-			<div className="mb-4">
-				<h3>
+			<div className="mb-20 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 md:mb-28">
+				<h3 className="mb-4 text-4xl leading-tight lg:text-6xl">
 					<Link
 						href={`/blog/${slug.current}`}
 						className="hover:underline"
@@ -40,9 +42,12 @@ const HeroPost = ({
 						{title}
 					</Link>
 				</h3>
-				<div className="text-lg md:mb-0">
+				<div className="mb-4 text-lg md:mb-0">
 					<Date date={date} />
 				</div>
+			</div>
+			<div>
+				<p className="mb-4 text-lg leading-relaxed">{excerpt}</p>
 			</div>
 		</section>
 	);
